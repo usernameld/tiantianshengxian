@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {% load static %}
+    <title> {% block title %}标题{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="shortcut icon" href="{% static 'logo02.png' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'slide.js' %}"></script>
+    <script type="text/javascript" src="{% static 'list.js' %}"></script>
+</head>
+<body>
+
+{% block topbar %}
+<div class="header_con">
+    <div class="header">
+        <div class="welcome fl">欢迎来到天天生鲜!</div>
+        <div class="fr">
+            <div class="login_btn fl" style="display: block">
+{#                如果有用户登录，放这个用户名，否则登录或注册#}
+                {% if user %}
+                    {{ user }}
+                    <span></span>
+                    <a href="{% url 'log_off' %}">注销</a>
+                {% else %}
+                    <a href="{% url 'login' %}">登录</a>
+                    <span>|</span>
+                    <a href="{% url 'register' %}">注册</a>
+                {% endif %}
+            </div>
+
+            <div class="user_link fl">
+                <span>|</span>
+                <a href="{% url 'index' %}">首页</a>
+                <span>|</span>
+                <a href="{% url 'message' %}">用户中心</a>
+                <span>|</span>
+                <a href="{% url 'cart' %}">我的购物车</a>
+                <span>|</span>
+                <a href="{% url 'order' %}">我的订单</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="search_bar clearfix">
+    <a href="{% url 'index' %}" class="logo fl">
+        <img src="{% static 'logo02.png' %}"></a>
+    <div class="search_con fl">
+        <form action="{% url 'list' %}">
+            <input type="text" class="input_text fl" name="q" value="word" id="q" placeholder="搜索商品">
+            <input type="submit" class="input_btn fr" id="search" name="" value="搜索">
+        </form>
+
+
+    </div>
+    <div class="guest_cart fr">
+        <a href="{% url 'cart' %}" class="cart_name fl">我的购物车</a>
+        <div class="goods_count fl" id="show_count">0</div>
+    </div>
+</div>
+
+<div class="navbar_con">
+    <div class="navbar">
+        <h1 class="fl">全部商品分类</h1>
+        <ul class="navlist fl">
+            <li><a href="{% url 'index' %}">首页</a></li>
+            {% for category in categories %}
+                <li class="interval">|</li>
+                <li><a href="{% url 'list' %}?category_id={{ category.id }}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock topbar %}
+
+{% block content %}
+这是内容部分
+{% endblock content %}
+
+<div class="footer">
+    <div class="foot_link">
+        <a href="http://www.xiaozhican.top/shop/index/#">关于我们</a>
+        <span>|</span>
+        <a href="http://www.xiaozhican.top/shop/index/#">联系我们</a>
+        <span>|</span>
+        <a href="http://www.xiaozhican.top/shop/index/#">招聘人才</a>
+        <span>|</span>
+        <a href="http://www.xiaozhican.top/shop/index/#">友情链接</a>
+    </div>
+    <p>CopyRight All Rights Reserved</p>
+    <p>电话：010-****888 京ICP备*******8号</p>
+</div>
+
+</body>
+</html>

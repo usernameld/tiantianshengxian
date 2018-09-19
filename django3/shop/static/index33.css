@@ -1,0 +1,82 @@
+/* ::::: http://www.xiaozhican.top/static/css/reset.css ::::: */
+
+body, ul, ol, p, h1, h2, h3, h4, h5, h6, dl, dd, select, input, textarea, form { margin: 0px; padding: 0px; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+ul, ol { list-style: outside none none; }
+a { text-decoration: none; }
+img { border: 0px none; }
+.clearfix::before, .clearfix::after { content: ""; display: table; }
+.clearfix::after { clear: both; }
+.clearfix {  }
+.fl { float: left; }
+.fr { float: right; }
+/* ::::: http://www.xiaozhican.top/static/css/main.css ::::: */
+
+body { font-family: "Microsoft Yahei"; font-size: 12px; color: rgb(102, 102, 102); }
+html, body { height: 100%; }
+.header_con { background-color: rgb(247, 247, 247); height: 29px; border-bottom: 1px solid rgb(221, 221, 221); }
+.header { width: 1200px; height: 29px; margin: 0px auto; }
+.welcome, .login_info, .login_btn, .user_link { line-height: 29px; }
+.login_btn a, .user_link a { color: rgb(102, 102, 102); }
+.login_btn a:hover, .user_link a:hover { color: rgb(255, 136, 0); }
+.login_btn span, .user_link span { color: rgb(206, 206, 206); margin: 0px 10px; }
+.search_bar { width: 1200px; height: 115px; margin: 0px auto; }
+.logo { width: 150px; height: 59px; margin: 29px 0px 0px 17px; }
+.search_con { width: 616px; height: 38px; border: 1px solid rgb(55, 171, 64); margin: 34px 0px 0px 124px; background: transparent url('icons.png') no-repeat scroll 10px -338px; }
+.search_con .input_text { width: 470px; height: 34px; border: 0px none; margin: 2px 0px 0px 36px; outline: medium none; font-size: 12px; color: rgb(115, 114, 114); font-family: "Microsoft Yahei"; }
+.search_con .input_btn { width: 100px; height: 38px; background-color: rgb(55, 171, 64); border: 0px none; font-size: 14px; color: rgb(255, 255, 255); font-family: "Microsoft Yahei"; outline: medium none; cursor: pointer; }
+.guest_cart { width: 200px; height: 40px; margin-top: 34px; }
+.guest_cart .cart_name { width: 158px; height: 38px; line-height: 38px; border: 1px solid rgb(221, 221, 221); display: block; background: transparent url('icons.png') no-repeat scroll 13px -300px; font-size: 14px; color: rgb(55, 171, 64); text-indent: 56px; }
+.guest_cart .goods_count { width: 40px; height: 40px; text-align: center; line-height: 40px; font-size: 18px; font-weight: bold; color: rgb(255, 255, 255); background-color: rgb(255, 136, 0); }
+.navbar_con { height: 40px; border-bottom: 2px solid rgb(57, 169, 62); }
+.navbar { width: 1200px; margin: 0px auto; }
+.navbar h1 { width: 200px; height: 40px; line-height: 40px; text-align: center; font-size: 14px; color: rgb(255, 255, 255); background-color: rgb(57, 169, 62); }
+.navlist { margin-left: 34px; }
+.navlist li { height: 40px; float: left; line-height: 40px; }
+.navlist li a { color: rgb(102, 102, 102); font-size: 14px; }
+.navlist li a:hover { color: rgb(255, 136, 0); }
+.navlist .interval { margin: 0px 15px; }
+.center_con { width: 1200px; height: 270px; margin: 0px auto; }
+.subnav { width: 198px; height: 270px; border-left: 1px solid rgb(238, 238, 238); border-right: 1px solid rgb(238, 238, 238); }
+.subnav li { height: 44px; border-bottom: 1px solid rgb(238, 238, 238); background: rgb(255, 255, 255) url('icons.png') no-repeat scroll 178px -257px; }
+.subnav li a { display: block; height: 44px; line-height: 44px; text-indent: 71px; font-size: 14px; color: rgb(51, 51, 51); }
+.subnav li a:hover { color: rgb(255, 136, 0); }
+.subnav li .fruit { background: transparent url('icons.png') no-repeat scroll 28px 0px; }
+.subnav li .seafood { background: transparent url('icons.png') no-repeat scroll 28px -43px; }
+.subnav li .meet { background: transparent url('icons.png') no-repeat scroll 28px -86px; }
+.subnav li .egg { background: transparent url('icons.png') no-repeat scroll 28px -132px; }
+.subnav li .vegetables { background: transparent url('icons.png') no-repeat scroll 28px -174px; }
+.subnav li .ice { background: transparent url('icons.png') no-repeat scroll 28px -220px; }
+.slide { width: 760px; height: 270px; position: relative; overflow: hidden; }
+.slide .slide_pics { position: relative; left: 0px; top: 0px; width: 760px; height: 270px; }
+.slide .slide_pics li { width: 760px; height: 270px; position: absolute; left: 0px; top: 0px; }
+.slide .prev, .slide .next { width: 17px; height: 23px; background: transparent url('icons.png') no-repeat scroll left -388px; position: absolute; left: 11px; top: 122px; cursor: pointer; }
+.slide .next { background-position: left -428px; left: 732px; }
+.points { width: 100%; height: 11px; position: absolute; left: 0px; top: 250px; text-align: center; }
+.points li { display: inline-block; width: 11px; height: 11px; margin: 0px 5px; background-color: rgb(159, 159, 159); border-radius: 50%; cursor: pointer; }
+.points li.active { background-color: rgb(206, 206, 206); }
+.adv { width: 240px; height: 270px; overflow: hidden; background-color: gold; }
+.adv a { display: block; float: left; }
+.list_model { width: 1200px; height: 340px; margin: 15px auto 0px; }
+.list_title { height: 40px; border-bottom: 2px solid rgb(66, 173, 70); }
+.list_title h3 { height: 40px; line-height: 40px; font-size: 16px; color: rgb(55, 171, 64); font-weight: bold; }
+.list_title .subtitle a:hover, .goods_more:hover { color: rgb(255, 136, 0); }
+.goods_more { height: 20px; margin-top: 15px; color: rgb(102, 102, 102); }
+.goods_con { height: 300px; }
+.goods_banner { width: 200px; height: 300px; }
+.goods_banner img { width: 200px; height: 300px; }
+.goods_list { width: 1000px; height: 299px; border-bottom: 1px solid rgb(237, 237, 237); }
+.goods_list li { height: 299px; width: 249px; border-right: 1px solid rgb(237, 237, 237); float: left; }
+.goods_list li:hover { width: 248px; height: 297px; border: 1px solid gold; }
+.goods_list li:hover img { opacity: 0.8; }
+.goods_list li h4 { width: 200px; height: 50px; margin: 20px auto 0px; text-align: center; }
+.goods_list li h4 a { font-size: 14px; color: rgb(102, 102, 102); font-weight: normal; line-height: 24px; }
+.goods_list li h4 a:hover { color: rgb(255, 136, 0); }
+.goods_list li img { display: block; width: 180px; height: 180px; margin: 0px auto; }
+.goods_list li .prize { text-align: center; font-size: 20px; color: rgb(196, 0, 0); margin-top: 5px; }
+.footer { border-top: 2px solid rgb(66, 173, 70); margin: 30px 0px; }
+.foot_link { text-align: center; margin-top: 30px; }
+.foot_link a, .foot_link span { color: rgb(78, 78, 78); }
+.foot_link a:hover { color: rgb(255, 136, 0); }
+.foot_link span { padding: 0px 10px; }
+.footer p { text-align: center; margin-top: 10px; }

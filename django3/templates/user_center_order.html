@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}全部订单{% endblock title %}
+
+{% block content %}
+
+    <div class="main_con clearfix">
+        <div class="left_menu_con clearfix">
+            <h3>用户中心</h3>
+            <ul>
+                <li><a href="{% url 'message' %}">· 个人信息</a></li>
+                <li><a href="{% url 'order' %}" class="active">· 全部订单</a></li>
+                <li><a href="{% url 'site' %}">· 收货地址</a></li>
+            </ul>
+        </div>
+        <div class="right_content clearfix">
+            {% for items in page.object_list %}
+                <h3 class="common_title2">全部订单</h3>
+                <ul class="order_list_th w978 clearfix">
+                    <li class="col01">{{ items.add_time }}</li>
+                    <li class="col02">订单号：56872934</li>
+                    <li class="col02 stress">{{ items.get_pay_status_display }}</li>
+                </ul>
+
+                <table class="order_list_table w980">
+                    <tbody>
+                    <tr>
+                        <td width="55%">
+
+                            <ul class="order_goods_list clearfix">
+                                {% for id in items.ordergoods_set.all %}
+
+                                    <li class="col01"><img src="{{ MEDIA_URL }}{{ id.goods.thumb }}"></li>
+                                    <li class="col02">{{ id.goods.name }}<em class="price">{{ id.goods.price }}元/500g</em></li>
+                                    <li class="col03">{{ id.number }}</li>
+                                    <li class="col04">元</li>
+
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td width="15%" id="total">元</td>
+                        <td width="15%">待付款</td>
+                        <td width="15%"><a href="{% url 'order' %}" class="oper_btn">去付款</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            {% endfor %}
+            <div class="pagenation">
+
+                {% for page in page.paginator.page_range %}
+                    <a href="{% url 'order' %}?num={{ page }}"
+                       class="active" style="background-color: #1b6d85">{{ page }}</a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function () {
+        $('.price').each(function (i,el){
+            var price = parseFloat($(el).html())
+            var number = $(el).parents('li').next().html()
+            $(el).parents('li').next().next().html((price*number).toFixed(2)+"元")
+        })
+        var total = 0
+        $('.col04').each(function (i,el) {
+            total += parseFloat($(el).html())*100
+            $('#total').html((total/100).toFixed(2)+"元")
+        })
+    })
+    </script>
+
+{% endblock content %}

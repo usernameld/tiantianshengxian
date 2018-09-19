@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}地址{% endblock title %}
+{% block content %}
+    <div class="main_con clearfix">
+        <div class="left_menu_con clearfix">
+            <h3>用户中心</h3>
+            <ul>
+                <li><a href="{% url 'message' %}">· 个人信息</a></li>
+                <li><a href="{% url 'order' %}">· 全部订单</a></li>
+                <li><a href="{% url 'site' %}" class="active">· 收货地址</a></li>
+            </ul>
+        </div>
+        <div class="right_content clearfix">
+            <h3 class="common_title2">收货地址</h3>
+            <div class="site_con">
+                <dl>
+                    <table>
+                        {% for i in silt %}
+                            <tr>
+                                <td checked width="800" align="left">{{ i.amply }}</td>
+                                <td><input type="radio" class="ass" danxuan="{{ i.id }}" name="adds " checked width="50"
+                                           align="center"></td>
+                                <td align="right"><a href="{% url 'dell' %}?address={{ i.id }}" style="color: deepskyblue">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="3" align="right">
+                                <a href="{% url 'aaa' %}" id="tijiao"
+                                   style="background-color: blanchedalmond;color: black;font-size:15px ">提交</a></td>
+                        </tr>
+                    </table>
+
+
+                    {#                    {% for i in silt %}#}
+                    {#                        <li><input class="select" type="checkbox" name="" checked></li>#}
+                    {#                        <dd>{{ i.amply }}</dd>#}
+                    {#                        <li><a href="{% url 'dell' %}?address_id={{ i.id }}">删除</a></li>#}
+                    {#                    {% endfor %}#}
+                </dl>
+            </div>
+            <h3 class="common_title2">编辑地址</h3>
+            <div class="site_con">
+                <form action="{% url 'site' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form_group">
+                        <label>收件人：</label>
+                        <input type="text" name="addressee">
+                    </div>
+                    <div class="form_group form_group2">
+                        <label>详细地址：</label>
+                        <textarea class="site_area" name="amply"></textarea>
+                    </div>
+                    <div class="form_group">
+                        <label>邮编：</label>
+                        <input type="text" name="zip">
+                    </div>
+                    <div class="form_group">
+                        <label>手机：</label>
+                        <input type="text" name="phone">
+                    </div>
+
+                    <input type="submit" name="" value="提交" class="info_submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#tijiao').click(function () {
+            aaa = []
+            $('.ass:checked').each(function (i, el) {
+                aaa.push($(el).attr('danxuan'))
+                alert(aaa)
+            })
+            $(this).attr('href', '{% url "aaa" %}?aaa=' + aaa)
+        })
+    </script>
+{% endblock content %}
+

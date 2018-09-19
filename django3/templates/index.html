@@ -1,0 +1,133 @@
+<!-- saved from url=(0037)http://www.xiaozhican.top/shop/index/ -->
+{#<html>#}
+{#<head>#}
+{#    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">#}
+{#    {% load static %}#}
+{#    <title> 天天生鲜首页</title>#}
+{#    <link rel="stylesheet" href="{% static 'reset.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'main.css' %}">#}
+{#    <link rel="shortcut icon" href="{% static 'logo02.png' %}">#}
+{#    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>#}
+{#    <script type="text/javascript" src="{% static 'jquery-ui.min.js' %}"></script>#}
+{#    <script type="text/javascript" src="{% static 'slide.js' %}"></script>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<div class="header_con">#}
+{#    <div class="header">#}
+{#        <div class="welcome fl">欢迎来到天天生鲜!</div>#}
+{#        <div class="fr">#}
+{#            <div class="login_btn fl" style="display: block">#}
+{#                {% if user %}#}
+{#                    {{ user }}#}
+{#                {% else %}#}
+{#                    <a href="{% url 'login' %}">登录</a>#}
+{#                    <span>|</span>#}
+{#                    <a href="{% url 'register' %}">注册</a>#}
+{#                {% endif %}#}
+{#            </div>#}
+{##}
+{#            <div class="user_link fl">#}
+{#                <span>|</span>#}
+{#                <a href="http://www.xiaozhican.top/shop/index/">首页</a>#}
+{#                <span>|</span>#}
+{#                <a href="http://www.xiaozhican.top/account/user_center_info/">用户中心</a>#}
+{#                <span>|</span>#}
+{#                <a href="http://www.xiaozhican.top/shop_cart/shop_cart/">我的购物车</a>#}
+{#                <span>|</span>#}
+{#                <a href="http://www.xiaozhican.top/account/user_center_order/">我的订单</a>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{##}
+{#<div class="search_bar clearfix">#}
+{#    <a href="http://www.xiaozhican.top/shop/index/" class="logo fl">#}
+{#        <img src="{% static 'logo02.png' %}"></a>#}
+{#    <div class="search_con fl">#}
+{#        <form action="http://www.xiaozhican.top/search/">#}
+{#            <input type="text" class="input_text fl" name="q" value="" id="q" placeholder="搜索商品">#}
+{#            <input type="submit" class="input_btn fr" id="search" name="" value="搜索">#}
+{#        </form>#}
+{##}
+{##}
+{#    </div>#}
+{#    <div class="guest_cart fr">#}
+{#        <a href="http://www.xiaozhican.top/shop_cart/shop_cart/" class="cart_name fl">我的购物车</a>#}
+{#        <div class="goods_count fl" id="show_count">0</div>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<div class="navbar_con">#}
+{#    <div class="navbar">#}
+{#        <h1 class="fl">全部商品分类</h1>#}
+{#        <ul class="navlist fl">#}
+{#            <li><a href="http://www.xiaozhican.top/shop/index/">首页</a></li>#}
+{#            {% for category in categories %}#}
+{#                <li class="interval">|</li>#}
+{#                <li><a href="http://www.xiaozhican.top/shop/categorys/5/">{{ category.name }}</a></li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    </div>#}
+{#</div>#}
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}首页{% endblock title %}
+
+{% block content %}
+<div class="center_con clearfix">
+    <ul class="subnav fl">
+        {% for category in categories %}
+            <li><a href="{% url 'list' %}?category_id={{ category.id }}" class="{{ category.icon }}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <div class="slide fl">
+        <ul class="slide_pics">
+            <li style="left: -760px;"><img src="{% static 'slide.jpg' %}" alt="幻灯片"></li>
+            <li style="left: 0px;"><img src="{% static 'slide02.jpg' %}" alt="幻灯片"></li>
+            <li style="left: 760px;"><img src="{% static 'slide03.jpg' %}" alt="幻灯片"></li>
+            <li style="left: 760px;"><img src="{% static 'slide04.jpg' %}" alt="幻灯片"></li>
+        </ul>
+        <div class="prev"></div>
+        <div class="next"></div>
+        <ul class="points">
+        </ul>
+    </div>
+    <div class="adv fl">
+        <a href="http://www.xiaozhican.top/shop/index/#"><img src="{% static 'adv01.jpg' %}"></a>
+        <a href="http://www.xiaozhican.top/shop/index/#"><img src="{% static 'adv02.jpg' %}"></a>
+    </div>
+</div>
+
+{% for category in categories %}
+    <div class="list_model">
+    <div class="list_title clearfix">
+        <h3 class="fl" id="model01">{{ category.name }}</h3>
+        <a href="http://www.xiaozhihcan.top/shop/categorys/1/" class="goods_more fr" id="fruit_more">查看更多 &gt;</a>
+    </div>
+    <div class="goods_con clearfix">
+        <div class="goods_banner fl"><img src="{{ MEDIA_URL }}{{ category.icon }}"></div>
+        <ul class="goods_list fl">
+{#        切片，只显示四页#}
+            {% for goods in category.goods_set.all|slice:':4' %}
+                <li>
+                    <h4><a href="{% url 'detail' %}?goods_id={{ goods.id }}">{{ goods.name }}</a></h4>
+                    <a href="{% url 'detail' %}?goods_id={{ goods.id }}">
+                        <img src="{{ MEDIA_URL }}{{ goods.thumb }}">
+                    </a>
+                    <div class="prize">¥ {{ goods.price }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
+

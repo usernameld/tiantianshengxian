@@ -1,0 +1,100 @@
+
+<!-- saved from url=(0042)http://www.xiaozhican.top/account/register -->
+{#<html>#}
+{#<head>#}
+{#    {% load static %}#}
+{#    #若static建在和templates同级，就要写staticfiles,进而在settings.py里设置STATICFICES_DIRS#}
+{#    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">#}
+{#    <title>欢迎注册</title>#}
+{#    <link rel="stylesheet" href="{% static 'reset.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'main.css' %}">#}
+{#    <link rel="shortcut icon" href="{% static 'logo02.png' %}">#}
+{#    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>#}
+{#    <script type="text/javascript" src="{% static 'jquery-ui.min.js' %}"></script>#}
+{#    <script type="text/javascript" src="{% static 'register.js' %}"></script>#}
+{##}
+{#</head>#}
+{#<body>#}
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}注册{% endblock title %}
+{% block topbar %}{% endblock topbar %}
+{% block content %}
+
+    <div class="register_con">
+        <div class="l_con fl">
+            <a class="reg_logo" href="http://www.xiaozhican.top/shop/index/"><img src="{% static 'logo02.png' %}"></a>
+            <div class="reg_slogan">足不出户 · 新鲜每一天</div>
+            <div class="reg_banner"></div>
+        </div>
+
+        <div class="r_con fr">
+            <div class="reg_title clearfix">
+                <h1>用户注册</h1>
+                <a href="{% url 'login' %}">登录</a>
+            </div>
+            <div class="reg_form clearfix">
+                <form action="{% url 'register' %}" method="post" id="reg_form">
+                    {% csrf_token %}
+                    <ul>
+{#                        {% for field in forms %}#}
+{#                            <li>#}
+{#                                {{ field.label_tag }}#}
+{#                                {{ field }}#}
+{#                                <span class="error_tip">{{ field.errors }}</span>#}
+{#                            </li>#}
+{#                        {% endfor %}#}
+
+                        <li>
+                            <label>用户名:</label>
+                            <input type="text" name="username" id="user_name" value="">
+                            <span class="error_tip"></span>
+                        </li>
+                        <li>
+                            <label>密码:</label>
+                            <input type="password" name="password1" id="pwd" value="">
+                            <span class="error_tip"></span>
+                        </li>
+                        <li>
+                            <label>确认密码:</label>
+                            <input type="password" name="password2" id="cpwd" value="">
+                            <span class="error_tip"></span>
+                        </li>
+                        <li>
+                            <label>邮箱:</label>
+                            <input type="text" name="email" id="email" value="">
+                            <span class="error_tip"></span>
+                        </li>
+                        <li class="agreement">
+                            <input type="checkbox" name="allow" id="allow" checked="checked" value="1">
+                            <label>同意”天天生鲜用户使用协议“</label>
+                            <span class="error_tip2"></span>
+                        </li>
+                        <div class="errs"></div>
+                        <li class="reg_sub">
+                            <input type="submit" value="注 册" name="">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{#<div class="footer">#}
+{#    <div class="foot_link">#}
+{#        <a href="http://www.xiaozhican.top/account/register#">关于我们</a>#}
+{#        <span>|</span>#}
+{#        <a href="http://www.xiaozhican.top/account/register#">联系我们</a>#}
+{#        <span>|</span>#}
+{#        <a href="http://www.xiaozhican.top/account/register#">招聘人才</a>#}
+{#        <span>|</span>#}
+{#        <a href="http://www.xiaozhican.top/account/register#">友情链接</a>#}
+{#    </div>#}
+{#    <p>CopyRight All Rights Reserved</p>#}
+{#    <p>电话：010-****888 京ICP备*******8号</p>#}
+{#</div>#}
+</body>
+</html>
